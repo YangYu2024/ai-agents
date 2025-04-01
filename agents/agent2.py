@@ -7,7 +7,8 @@ import os
 load_dotenv()
 
 # Initialize the Ollama language model
-llm = OllamaLLM(model="llama3.2", temperature=0)
+# llm = OllamaLLM(model="llama3.2", temperature=0)
+llm = OllamaLLM(model="qwen2.5:7b", temperature=0)
 
 # Load tools
 tools = load_tools(["ddg-search", "llm-math"], llm=llm)

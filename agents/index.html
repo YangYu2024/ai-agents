@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+<body>
+    <div class="mermaid">
+        ---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	route(route)
+	translate(translate)
+	calculate(calculate)
+	define(define)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> route;
+	calculate --> __end__;
+	define --> __end__;
+	translate --> __end__;
+	route -.-> translate;
+	route -.-> calculate;
+	route -.-> define;
+	route -. &nbsp;end&nbsp; .-> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc
+
+    </div>
+</body>
+</html>
