@@ -10,7 +10,6 @@ When running AI agents for the first time in a session, there was a significant 
 
 - `scripts/warmup_model.py` - Main warmup script that tests all three client interfaces used by agents
 - `scripts/warmup.sh` - Shell wrapper that handles virtual environment setup
-- `warmup_model.py` - Root-level convenience script
 - `venv/` - Virtual environment with required packages
 
 ## Modified Files
@@ -24,14 +23,10 @@ When running AI agents for the first time in a session, there was a significant 
 The warmup is automatically integrated into the startup process via `scripts/startOllama.sh`. When you start a new Codespace, the model will be warmed up automatically.
 
 ### Manual Warmup
-You can manually warm up the model anytime with either of these commands:
+You can manually warm up the model anytime with this command:
 
 ```bash
-# Option 1: Using the shell script (recommended)
 ./scripts/warmup.sh
-
-# Option 2: Using the Python wrapper
-python3 warmup_model.py
 ```
 
 ### Individual Interface Testing
