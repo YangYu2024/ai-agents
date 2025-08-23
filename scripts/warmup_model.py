@@ -83,6 +83,34 @@ async def warmup_async_ollama():
         print(f"{RED}✗ Async ollama warmup failed: {e}{RESET}")
         return False
 
+def warmup_litellm_model():
+    """Warmup using LiteLLMModel with ollama_chat (for smolagents)"""
+    try:
+        from smolagents import LiteLLMModel, ToolCallingAgent
+        print(f"{CYAN}Warming up LiteLLMModel interface...{RESET}")
+        
+        model = LiteLLMModel(
+            model_id="ollama_chat/llama3.2",
+            api_base="http://localhost:11434",
+            num_ctx=4096,
+            temperature=0.0,
+        )
+        
+        # Create a simple agent without tools for warmup
+        agent = ToolCallingAgent(tools=[], model=model)
+        
+        start_time = time.time()
+        
+        # Make a simple test call through the agent
+        response = agent.run("Hello")
+        
+        end_time = time.time()
+        print(f"{GREEN}✓ LiteLLMModel warmup completed in {end_time - start_time:.2f}s{RESET}")
+        return True
+    except Exception as e:
+        print(f"{RED}✗ LiteLLMModel warmup failed: {e}{RESET}")
+        return False
+
 def check_ollama_status():
     """Check if Ollama server is running"""
     try:
@@ -112,7 +140,7 @@ async def main():
     total_start = time.time()
     
     success_count = 0
-    total_tests = 3
+    total_tests = 4
     
     # Warmup different client interfaces
     if warmup_langchain_ollama():
@@ -122,6 +150,9 @@ async def main():
         success_count += 1
         
     if await warmup_async_ollama():
+        success_count += 1
+        
+    if warmup_litellm_model():
         success_count += 1
     
     total_end = time.time()

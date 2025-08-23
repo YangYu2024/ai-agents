@@ -14,7 +14,7 @@ if [ ! -d "$PROJECT_ROOT/venv" ]; then
     cd "$PROJECT_ROOT"
     python3 -m venv venv
     source venv/bin/activate
-    pip install ollama langchain-ollama openai requests
+    pip install ollama langchain-ollama openai requests litellm smolagents
     cd - > /dev/null
 else
     source "$PROJECT_ROOT/venv/bin/activate"

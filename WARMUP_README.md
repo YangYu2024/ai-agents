@@ -30,11 +30,12 @@ You can manually warm up the model anytime with this command:
 ```
 
 ### Individual Interface Testing
-The warmup script tests three different client interfaces:
+The warmup script tests four different client interfaces:
 
 1. **langchain_ollama** - Used by `agent1.py`, `agent4.py`, etc.
 2. **OpenAI client** - Used by `rag_agent.py`, etc.
 3. **Async ollama client** - Used by `learning.py`, `goal.py`, etc.
+4. **LiteLLMModel** - Used by `curr_conv_agent.py`, `mem_agent.py`, etc. (smolagents)
 
 ## Performance Impact
 
@@ -49,6 +50,8 @@ The warmup solution automatically handles dependency installation in a virtual e
 - `langchain-ollama` - LangChain Ollama integration
 - `openai` - OpenAI-compatible client
 - `requests` - HTTP requests for health checks
+- `litellm` - LiteLLM for multi-provider support
+- `smolagents` - SmolAgents framework
 
 ## Technical Details
 
